@@ -16,7 +16,6 @@ const INITIAL_STATE = {
     email: '',
     passwordOne: '',
     passwordTwo: '',
-    error: null,
 };
 
 class SignUpFormBase extends Component {
@@ -42,9 +41,8 @@ class SignUpFormBase extends Component {
                 this.setState({ ...INITIAL_STATE });
                 this.props.history.push(ROUTES.HOME);
             })
-            .catch(error => {
+            .catch(() => {
                 console.log("There is an error!");
-                this.setState({ error });
             });
         event.preventDefault();
     }
@@ -57,7 +55,6 @@ class SignUpFormBase extends Component {
             email,
             passwordOne,
             passwordTwo,
-            error,
         } = this.state;
 
         const isInvalid =
@@ -98,7 +95,6 @@ class SignUpFormBase extends Component {
                 />
                 <button disabled={isInvalid} type="submit">
                     Sign Up</button>
-                {error && <p>{error.message}</p>}
             </form>
         );
     }
