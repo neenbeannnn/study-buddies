@@ -6,7 +6,9 @@ const AccountPage = () => (
     <AuthUserContext.Consumer>
         {authUser => (
             <div>
-                <h1>Account: {authUser.email}</h1>
+                <button onClick={() => console.log({ authUser })}>Show authUser</button>
+                <h1>Name: {authUser.username}</h1>
+                <h1>Email: {authUser.email}</h1>
                 {/* <PasswordForgetForm /> */}
                 {/* <PasswordChangeForm /> */}
             </div>

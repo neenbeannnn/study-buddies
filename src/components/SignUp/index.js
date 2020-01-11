@@ -12,7 +12,7 @@ const SignUpPage = () => (
 );
 
 const INITIAL_STATE = {
-    // username: '',
+    username: '',
     email: '',
     passwordOne: '',
     passwordTwo: '',
@@ -25,7 +25,7 @@ class SignUpFormBase extends Component {
     }
 
     onSubmit = event => {
-        const { email, passwordOne } = this.state; //username
+        const { username, email, passwordOne } = this.state;
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
@@ -33,7 +33,7 @@ class SignUpFormBase extends Component {
                 return this.props.firebase
                     .user(authUser.user.uid)
                     .set({
-                        // username,
+                        username,
                         email,
                     });
             })
