@@ -24,6 +24,9 @@ const NavigationAuth = () => (
             <Link to={ROUTES.HOME}>Home</Link>
         </li>
         <li>
+            <Link to={ROUTES.CLASSES}>Classes</Link>
+        </li>
+        <li>
             <Link to={ROUTES.ACCOUNT}>Account</Link>
         </li>
         <li>
