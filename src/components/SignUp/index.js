@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import './index.css';
 
 const SignUpPage = () => (
     <div>
@@ -13,7 +14,11 @@ const SignUpPage = () => (
 
 const INITIAL_STATE = {
     // username: '',
+    firstName: '',
+    lastName: '',
     email: '',
+    id: '',
+    major: '',
     passwordOne: '',
     passwordTwo: '',
 };
@@ -51,8 +56,10 @@ class SignUpFormBase extends Component {
     };
     render() {
         const {
-            username,
+            firstName,
+            lastName,
             email,
+            major,
             passwordOne,
             passwordTwo,
         } = this.state;
@@ -61,17 +68,30 @@ class SignUpFormBase extends Component {
             passwordOne !== passwordTwo ||
             passwordOne === '' ||
             email === '' ||
-            username === '';
+            firstName === '' ||
+            lastName === '' ||
+            major === '';
 
         return (
+            <div className = 'profileInfo'>
             <form onSubmit={this.onSubmit}>
+                <br />
                 <input
-                    name="username"
-                    value={username}
+                    name="firstName"
+                    value={firstName}
                     onChange={this.onChange}
                     type="text"
-                    placeholder="Full Name"
+                    placeholder="First Name"
                 />
+                <br />
+                <input
+                    name="lastName"
+                    value={lastName}
+                    onChange={this.onChange}
+                    type="text"
+                    placeholder="Last Name"
+                />
+                <br />
                 <input
                     name="email"
                     value={email}
@@ -79,6 +99,15 @@ class SignUpFormBase extends Component {
                     type="text"
                     placeholder="Email Address"
                 />
+                <br />
+                <input
+                    major="major"
+                    value={major}
+                    onChange={this.onChange}
+                    type="text"
+                    placeholder="Major"
+                />
+                <br />
                 <input
                     name="passwordOne"
                     value={passwordOne}
@@ -86,6 +115,7 @@ class SignUpFormBase extends Component {
                     type="password"
                     placeholder="Password"
                 />
+                <br />
                 <input
                     name="passwordTwo"
                     value={passwordTwo}
@@ -93,9 +123,11 @@ class SignUpFormBase extends Component {
                     type="password"
                     placeholder="Confirm Password"
                 />
+                <br />
                 <button disabled={isInvalid} type="submit">
                     Sign Up</button>
             </form>
+            </div>
         );
     }
 }
