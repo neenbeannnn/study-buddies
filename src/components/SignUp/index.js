@@ -8,9 +8,9 @@ import './index.css';
 class SignUpPage extends Component {
     render() {
         return (
-            <div className = 'SignUp'>
-            <h1>Register With Us!</h1>
-            <SignUpForm />
+            <div className='SignUp'>
+                <h1>Register With Us!</h1>
+                <SignUpForm />
             </div>
         );
     }
@@ -34,7 +34,7 @@ class SignUpFormBase extends Component {
     }
 
     onSubmit = event => {
-        const { email, passwordOne } = this.state; //username
+        const { email, passwordOne } = this.state;
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
@@ -42,7 +42,6 @@ class SignUpFormBase extends Component {
                 return this.props.firebase
                     .user(authUser.user.uid)
                     .set({
-                        // username,
                         email,
                     });
             })
@@ -52,6 +51,7 @@ class SignUpFormBase extends Component {
             })
             .catch(() => {
                 console.log("There is an error!");
+                this.props.history.push(ROUTES.HOME);
             });
         event.preventDefault();
     }
@@ -77,60 +77,60 @@ class SignUpFormBase extends Component {
             major === '';
 
         return (
-            <div className = 'boxed'>
-            <form onSubmit={this.onSubmit}>
-                <br />
-                <input
-                    name="firstName"
-                    value={firstName}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="First Name"
-                />
-                <br />
-                <input
-                    name="lastName"
-                    value={lastName}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Last Name"
-                />
-                <br />
-                <input
-                    name="email"
-                    value={email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Email Address"
-                />
-                <br />
-                <input
-                    major="major"
-                    value={major}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Major"
-                />
-                <br />
-                <input
-                    name="passwordOne"
-                    value={passwordOne}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Password"
-                />
-                <br />
-                <input
-                    name="passwordTwo"
-                    value={passwordTwo}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Confirm Password"
-                />
-                <br />
-                <button className = 'button' disabled={isInvalid} type="submit">
-                    Sign Up</button>
-            </form>
+            <div className='boxed'>
+                <form onSubmit={this.onSubmit}>
+                    <br />
+                    <input
+                        name="firstName"
+                        value={firstName}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="First Name"
+                    />
+                    <br />
+                    <input
+                        name="lastName"
+                        value={lastName}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Last Name"
+                    />
+                    <br />
+                    <input
+                        name="email"
+                        value={email}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Email Address"
+                    />
+                    <br />
+                    <input
+                        name="major"
+                        value={major}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Major"
+                    />
+                    <br />
+                    <input
+                        name="passwordOne"
+                        value={passwordOne}
+                        onChange={this.onChange}
+                        type="password"
+                        placeholder="Password"
+                    />
+                    <br />
+                    <input
+                        name="passwordTwo"
+                        value={passwordTwo}
+                        onChange={this.onChange}
+                        type="password"
+                        placeholder="Confirm Password"
+                    />
+                    <br />
+                    <button className='button' disabled={isInvalid} type="submit">
+                        Sign Up</button>
+                </form>
             </div>
         );
     }

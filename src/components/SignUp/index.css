@@ -1,4 +1,4 @@
-.boxed {    
+.boxed {
     text-align: center;
 }
 
@@ -16,10 +16,6 @@ input {
     text-align: center;
 }
 
-body {
-    background-image: url(https://thumbs.dreamstime.com/z/student-study-group-21490165.jpg)
-}
-
 .button {
     background-color: #4caf50;
     border: none;
@@ -29,4 +25,8 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+
+p {
+    color: white;
 }

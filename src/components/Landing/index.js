@@ -1,19 +1,22 @@
 import React from 'react';
 import './index.css';
+import * as ROUTES from '../../constants/routes';
+import { withRouter } from 'react-router-dom';
 
-const Landing = () => (
-    <div>
-        <h1 className='title'> Study Buddies</h1>
-        <Questions />
-    </div>
-);
+class Landing extends React.Component {
 
-const Questions = () => (
-    <div>
-        <h2> Ever feel alone in your classes?</h2>
-        <h2> Are you in need of some new friends?</h2>
-        <h2> Join Study Buddies!</h2>
-    </div>
-)
+    render() {
+        return (
+            <div className='landing-container'>
+                <div className='questions-container'>
+                    <h2 className='question'> Ever feel <span>alone</span> in your classes?</h2>
+                    <h2 className='question'> Are you in need of some <span>new friends</span>?</h2>
+                    <h2 className='question'> Join Study Buddies!</h2>
+                </div>
 
-export default Landing;
+                <button onClick={() => this.props.history.push(ROUTES.SIGN_IN)}>Let's go!</button>
+            </div>);
+    }
+}
+
+export default withRouter(Landing);
