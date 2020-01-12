@@ -1,0 +1,19 @@
+h1 {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000;
+    text-align: center;
+    font-size: 70px;
+}
+
+.home-section {
+    background-color: white;
+    border: 1px solid black;
+    width: 30%;
+    padding: 20px;
+}
+
+.home-body {
+    display: flex;
+    justify-content: space-around;
+}

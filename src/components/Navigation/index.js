@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import SignOutButton from '../SignOut';
-import * as ROUTES from '../../constants/routes';
+// import * as ROUTES from '../../constants/routes';
 import { AuthUserContext } from '../Session';
 import './index.css';
 
@@ -29,9 +29,6 @@ const NavigationNonAuth = () => (
         <h1 className='title'>
             Study Buddies
         </h1>
-        <div>
-            <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-        </div>
     </div>
 );
 export default Navigation;
