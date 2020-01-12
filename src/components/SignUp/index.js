@@ -5,12 +5,16 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import './index.css';
 
-const SignUpPage = () => (
-    <div>
-        <h1>SignUp</h1>
-        <SignUpForm />
-    </div>
-);
+class SignUpPage extends Component {
+    render() {
+        return (
+            <div className = 'SignUp'>
+            <h1>Register With Us!</h1>
+            <SignUpForm />
+            </div>
+        );
+    }
+};
 
 const INITIAL_STATE = {
     // username: '',
@@ -73,7 +77,7 @@ class SignUpFormBase extends Component {
             major === '';
 
         return (
-            <div className = 'profileInfo'>
+            <div className = 'boxed'>
             <form onSubmit={this.onSubmit}>
                 <br />
                 <input
@@ -124,7 +128,7 @@ class SignUpFormBase extends Component {
                     placeholder="Confirm Password"
                 />
                 <br />
-                <button disabled={isInvalid} type="submit">
+                <button className = 'button' disabled={isInvalid} type="submit">
                     Sign Up</button>
             </form>
             </div>
