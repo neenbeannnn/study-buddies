@@ -3,9 +3,11 @@ import { withRouter } from 'react-router-dom';
 import { SignUpLink } from '../SignUp';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import './index.css';
+
 const SignInPage = () => (
-    <div>
-        <h1>SignIn</h1>
+    <div className='title'>
+        <h1>Sign-In</h1>
         <SignInForm />
         <SignUpLink />
     </div>
@@ -41,6 +43,8 @@ class SignInFormBase extends Component {
         const isInvalid = password === '' || email === '';
         return (
             <form onSubmit={this.onSubmit}>
+                <div className='signin'>
+                <br />
                 <input
                     name="email"
                     value={email}
@@ -48,6 +52,7 @@ class SignInFormBase extends Component {
                     type="text"
                     placeholder="Email Address"
                 />
+                <br />
                 <input
                     name="password"
                     value={password}
@@ -55,7 +60,9 @@ class SignInFormBase extends Component {
                     type="password"
                     placeholder="Password"
                 />
-                <button disabled={isInvalid} type="submit">
+                </div>
+                <br />
+                <button className='button' disabled={isInvalid} type="submit">
                     Sign In
         </button>
                 {error && <p>{error.message}</p>}
