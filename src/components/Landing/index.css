@@ -1,0 +1,37 @@
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question {
+    font-family: 'Trebuchet MS';
+    font-size: 35px;
+    text-align: center;
+}
+
+button {
+    background-color: white;
+    padding: 20px;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #4caf50;
+    color: white;
+}
+
+.questions-container {
+    padding: 20px;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+span {
+    color: #4caf50;
+    font-style: italic;
+
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000;
+}

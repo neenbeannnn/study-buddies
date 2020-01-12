@@ -11,6 +11,7 @@ import GroupPage from '../Groups';
 // import AdminPage from '../Admin';
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
+import './index.css';
 const App = () => (
     <Router>
         <div>

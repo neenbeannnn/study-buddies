@@ -3,9 +3,11 @@ import { withRouter } from 'react-router-dom';
 import { SignUpLink } from '../SignUp';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import './index.css';
+
 const SignInPage = () => (
-    <div>
-        <h1>SignIn</h1>
+    <div className='signin-container'>
+        <h1 className='title'>Sign-In</h1>
         <SignInForm />
         <SignUpLink />
     </div>
@@ -41,21 +43,26 @@ class SignInFormBase extends Component {
         const isInvalid = password === '' || email === '';
         return (
             <form onSubmit={this.onSubmit}>
-                <input
-                    name="email"
-                    value={email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Email Address"
-                />
-                <input
-                    name="password"
-                    value={password}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Password"
-                />
-                <button disabled={isInvalid} type="submit">
+                <div className='signin'>
+                    <br />
+                    <input
+                        name="email"
+                        value={email}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Email Address"
+                    />
+                    <br />
+                    <input
+                        name="password"
+                        value={password}
+                        onChange={this.onChange}
+                        type="password"
+                        placeholder="Password"
+                    />
+                </div>
+                <br />
+                <button className='button' disabled={isInvalid} type="submit">
                     Sign In
         </button>
                 {error && <p>{error.message}</p>}

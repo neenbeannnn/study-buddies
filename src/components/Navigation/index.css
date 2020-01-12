@@ -1,0 +1,15 @@
+.title {
+    font-family: 'Trebuchet MS';
+    font-size: 70px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000;
+    font-style: italic;
+    color: #4caf50;
+    text-align: center;
+}
+
+.navigation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

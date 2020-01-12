@@ -3,17 +3,26 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import './index.css';
 
-const SignUpPage = () => (
-    <div>
-        <h1>SignUp</h1>
-        <SignUpForm />
-    </div>
-);
+class SignUpPage extends Component {
+    render() {
+        return (
+            <div className='SignUp'>
+                <h1>Register With Us!</h1>
+                <SignUpForm />
+            </div>
+        );
+    }
+};
 
 const INITIAL_STATE = {
-    username: '',
+    // username: '',
+    firstName: '',
+    lastName: '',
     email: '',
+    id: '',
+    major: '',
     passwordOne: '',
     passwordTwo: '',
 };
@@ -25,7 +34,7 @@ class SignUpFormBase extends Component {
     }
 
     onSubmit = event => {
-        const { username, email, passwordOne } = this.state;
+        const { email, passwordOne } = this.state;
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
@@ -33,7 +42,6 @@ class SignUpFormBase extends Component {
                 return this.props.firebase
                     .user(authUser.user.uid)
                     .set({
-                        username,
                         email,
                     });
             })
@@ -43,6 +51,7 @@ class SignUpFormBase extends Component {
             })
             .catch(() => {
                 console.log("There is an error!");
+                this.props.history.push(ROUTES.HOME);
             });
         event.preventDefault();
     }
@@ -51,8 +60,10 @@ class SignUpFormBase extends Component {
     };
     render() {
         const {
-            username,
+            firstName,
+            lastName,
             email,
+            major,
             passwordOne,
             passwordTwo,
         } = this.state;
@@ -61,41 +72,66 @@ class SignUpFormBase extends Component {
             passwordOne !== passwordTwo ||
             passwordOne === '' ||
             email === '' ||
-            username === '';
+            firstName === '' ||
+            lastName === '' ||
+            major === '';
 
         return (
-            <form onSubmit={this.onSubmit}>
-                <input
-                    name="username"
-                    value={username}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Full Name"
-                />
-                <input
-                    name="email"
-                    value={email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Email Address"
-                />
-                <input
-                    name="passwordOne"
-                    value={passwordOne}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Password"
-                />
-                <input
-                    name="passwordTwo"
-                    value={passwordTwo}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Confirm Password"
-                />
-                <button disabled={isInvalid} type="submit">
-                    Sign Up</button>
-            </form>
+            <div className='boxed'>
+                <form onSubmit={this.onSubmit}>
+                    <br />
+                    <input
+                        name="firstName"
+                        value={firstName}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="First Name"
+                    />
+                    <br />
+                    <input
+                        name="lastName"
+                        value={lastName}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Last Name"
+                    />
+                    <br />
+                    <input
+                        name="email"
+                        value={email}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Email Address"
+                    />
+                    <br />
+                    <input
+                        name="major"
+                        value={major}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Major"
+                    />
+                    <br />
+                    <input
+                        name="passwordOne"
+                        value={passwordOne}
+                        onChange={this.onChange}
+                        type="password"
+                        placeholder="Password"
+                    />
+                    <br />
+                    <input
+                        name="passwordTwo"
+                        value={passwordTwo}
+                        onChange={this.onChange}
+                        type="password"
+                        placeholder="Confirm Password"
+                    />
+                    <br />
+                    <button className='button' disabled={isInvalid} type="submit">
+                        Sign Up</button>
+                </form>
+            </div>
         );
     }
 }
